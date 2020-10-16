@@ -1,0 +1,11 @@
+
+
+Similar to step 2, I recommend making symbolic links for the input and output. 
+
+   $ ln -s /glade/work/lvank/from_cartesius/b.e21.BHIST.f09_g17.CMIP6-historical.003b/DstGrid3d input
+
+and the output files:
+
+   $ mkdir /glade/work/lvank/from_cartesius/b.e21.BHIST.f09_g17.CMIP6-historical.003b/DstGrid2d
+   $ ln -s /glade/work/lvank/from_cartesius/b.e21.BHIST.f09_g17.CMIP6-historical.003b/DstGrid2d output
+

@@ -1,0 +1,12 @@
+
+
+I recommend making symbolic links for the input and output, to make it very clear what is what. 
+For example, symlinking to the input files:
+
+   $ ln -s /glade/work/lvank/from_cartesius/b.e21.BHIST.f09_g17.CMIP6-historical.003b/vector2gridded3d input
+
+and the output files:
+
+   $ mkdir /glade/work/lvank/from_cartesius/b.e21.BHIST.f09_g17.CMIP6-historical.003b/DstGrid3d
+   $ ln -s /glade/work/lvank/from_cartesius/b.e21.BHIST.f09_g17.CMIP6-historical.003b/DstGrid3d output
+

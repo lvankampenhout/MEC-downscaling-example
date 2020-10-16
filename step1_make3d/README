@@ -1,0 +1,10 @@
+
+# This job requires quite a bit of memory, so run it on a batch node with 
+# increased mem: 
+
+execdav -m 100G
+
+# Load Python environment
+export PATH=/glade/u/home/lvank/miniconda3/bin:$PATH
+source activate base
+

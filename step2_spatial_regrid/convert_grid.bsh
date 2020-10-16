@@ -1,0 +1,33 @@
+#!/bin/bash
+set -x
+
+module load cdo
+
+INDIR=input    # Directory with files from step 1 (can be symlink)
+OUTDIR=output  # Directory for regridded files (can be symlink)
+
+
+# Select variables to process
+FILES=$(ls $INDIR/*nc)
+
+#FILES=$(ls $INDIR/QICE_19*nc) # specific variable
+#FILES=$(ls $INDIR/QRUNOFF_19*nc) # specific variable
+#FILES=$(ls $INDIR/TOPO_COL_timmean.nc) # specific file
+
+# Variable $FILES is a list, select first entry
+set -- $FILES
+FILE1=$1 
+
+# Pre-compute interpolation weights
+cdo genbil,dst_SCRIP.nc $FILE1 weights.nc
+
+# Main loop
+for FILE in $FILES; do
+   FNAME=$(basename $FILE)
+   NEWFILE=$OUTDIR/$FNAME
+
+   #cdo remapnn,grid_ZGRN11_new_CDO_1.8.txt $FILE $NEWFILE
+
+   # USE PRECOMPUTED WEIGHTS
+   cdo --format nc4 -b F32 remap,dst_SCRIP.nc,weights.nc $FILE $NEWFILE
+done
